@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Model.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Store" EntityType="Model.Store.Store" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_User" EntityType="Model.Store.V_User" store:Type="Views" store:Schema="dbo" store:Name="V_User">
+            <DefiningQuery>SELECT 
+      [V_User].[编号] AS [编号], 
+      [V_User].[用户名] AS [用户名], 
+      [V_User].[手机] AS [手机], 
+      [V_User].[卡号] AS [卡号], 
+      [V_User].[余额] AS [余额], 
+      [V_User].[性别] AS [性别], 
+      [V_User].[激活时间] AS [激活时间], 
+      [V_User].[级别] AS [级别], 
+      [V_User].[年] AS [年], 
+      [V_User].[职业] AS [职业], 
+      [V_User].[QQ] AS [QQ], 
+      [V_User].[消费额] AS [消费额], 
+      [V_User].[积分消费额] AS [积分消费额], 
+      [V_User].[现金消费额] AS [现金消费额], 
+      [V_User].[发卡人] AS [发卡人], 
+      [V_User].[状态] AS [状态]
+      FROM [dbo].[V_User] AS [V_User]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="密码" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="店名" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="所属行业ID" Type="int" Nullable="false" />
+          <Property Name="客户端ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="业务员ID" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“sqlbreakupclub.dbo.V_User”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_User">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="卡号" />
+            <PropertyRef Name="余额" />
+            <PropertyRef Name="消费额" />
+            <PropertyRef Name="积分消费额" />
+            <PropertyRef Name="现金消费额" />
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="余额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="性别" Type="nvarchar" MaxLength="50" />
+          <Property Name="激活时间" Type="datetime" />
+          <Property Name="级别" Type="nvarchar" MaxLength="50" />
+          <Property Name="年" Type="int" />
+          <Property Name="职业" Type="nvarchar" MaxLength="50" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="消费额" Type="decimal" Nullable="false" Precision="38" Scale="2" />
+          <Property Name="积分消费额" Type="decimal" Nullable="false" Precision="38" Scale="2" />
+          <Property Name="现金消费额" Type="decimal" Nullable="false" Precision="38" Scale="2" />
+          <Property Name="发卡人" Type="nvarchar" MaxLength="50" />
+          <Property Name="状态" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <Function Name="SP_VUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sid" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SMSVIPCardEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Model.Admin" />
+          <EntitySet Name="Stores" EntityType="Model.Store" />
+          <EntitySet Name="V_User" EntityType="Model.V_User" />
+          <FunctionImport Name="SP_VUser" EntitySet="V_User" ReturnType="Collection(Model.V_User)">
+          <Parameter Name="sid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="密码" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="卡号" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Type="Int32" Name="编号" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="店名" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="所属行业ID" Nullable="false" />
+          <Property Type="String" Name="客户端ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="业务员ID" />
+        </EntityType>
+        <EntityType Name="V_User">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="卡号" />
+            <PropertyRef Name="余额" />
+            <PropertyRef Name="消费额" />
+            <PropertyRef Name="积分消费额" />
+            <PropertyRef Name="现金消费额" />
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Type="Int32" Name="编号" Nullable="false" />
+          <Property Type="String" Name="用户名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="手机" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="余额" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="性别" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="激活时间" />
+          <Property Type="String" Name="级别" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="年" />
+          <Property Type="String" Name="职业" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="消费额" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="积分消费额" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="现金消费额" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="String" Name="发卡人" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="状态" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QQ" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SMSVIPCardEntities">
+          <EntitySetMapping Name="Admins"><EntityTypeMapping TypeName="Model.Admin"><MappingFragment StoreEntitySet="Admin">
+            <ScalarProperty Name="编号" ColumnName="编号" />
+            <ScalarProperty Name="用户名" ColumnName="用户名" />
+            <ScalarProperty Name="密码" ColumnName="密码" />
+            <ScalarProperty Name="卡号" ColumnName="卡号" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="Model.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="业务员ID" ColumnName="业务员ID" />
+                <ScalarProperty Name="客户端ID" ColumnName="客户端ID" />
+                <ScalarProperty Name="所属行业ID" ColumnName="所属行业ID" />
+                <ScalarProperty Name="店名" ColumnName="店名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_User">
+            <EntityTypeMapping TypeName="Model.V_User">
+              <MappingFragment StoreEntitySet="V_User">
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="状态" ColumnName="状态" />
+                <ScalarProperty Name="发卡人" ColumnName="发卡人" />
+                <ScalarProperty Name="现金消费额" ColumnName="现金消费额" />
+                <ScalarProperty Name="积分消费额" ColumnName="积分消费额" />
+                <ScalarProperty Name="消费额" ColumnName="消费额" />
+                <ScalarProperty Name="职业" ColumnName="职业" />
+                <ScalarProperty Name="年" ColumnName="年" />
+                <ScalarProperty Name="级别" ColumnName="级别" />
+                <ScalarProperty Name="激活时间" ColumnName="激活时间" />
+                <ScalarProperty Name="性别" ColumnName="性别" />
+                <ScalarProperty Name="余额" ColumnName="余额" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_VUser" FunctionName="Model.Store.SP_VUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="100">
+        <EntityTypeShape EntityType="Model.Admin" Width="1.5" PointX="0.75" PointY="0.75" Height="1.622213541666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Store" Width="1.5" PointX="3.375" PointY="0.75" Height="1.7908333333333335" />
+        <EntityTypeShape EntityType="Model.V_User" Width="1.5" PointX="0.75" PointY="3.75" Height="3.4770312499999996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

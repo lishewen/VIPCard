@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f1c8e128f4342388e64d5af32377946" Name="关系图1" ZoomLevel="100">
+        <EntityTypeShape EntityType="VIPCardModel.Admin" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.CardIssue" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Store" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Trade" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.User" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="VIPCardModel.FK_Order_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPCardModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="VIPCardModel.FK_Store_Trade" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VIPCardModel.V_Order" Width="1.5" PointX="7.75" PointY="2.875" />
+        <EntityTypeShape EntityType="VIPCardModel.Salesman" Width="1.5" PointX="3" PointY="8.75" />
+        <AssociationConnector Association="VIPCardModel.FK_User_CardIssue" />
+        <AssociationConnector Association="VIPCardModel.FK_Store_Salesman" />
+        <EntityTypeShape EntityType="VIPCardModel.V_OrderT" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="VIPCardModel.V_OrderC" Width="1.5" PointX="5.625" PointY="8.75" />
+        <EntityTypeShape EntityType="VIPCardModel.V_User" Width="1.5" PointX="3" PointY="11.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

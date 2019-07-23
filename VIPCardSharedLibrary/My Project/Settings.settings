@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="客户端版本号" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.0.0</Value>
+    </Setting>
+    <Setting Name="数据库IP" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">222.52.150.40,9032</Value>
+    </Setting>
+    <Setting Name="数据库名" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sqlbreakupclub</Value>
+    </Setting>
+    <Setting Name="数据库用户名" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sqlook</Value>
+    </Setting>
+    <Setting Name="数据库密码" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQ2010</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

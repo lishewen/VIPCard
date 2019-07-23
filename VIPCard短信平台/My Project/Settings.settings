@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="VIPCard短信平台_cn_entinfo_sdk1_WebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sdk1.entinfo.cn:8060/webservice.asmx</Value>
+    </Setting>
+    <Setting Name="用户名" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SDK-111-010-01824</Value>
+    </Setting>
+    <Setting Name="密码" Type="System.String" Scope="User">
+      <Value Profile="(Default)">499553</Value>
+    </Setting>
+    <Setting Name="签名" Type="System.String" Scope="User">
+      <Value Profile="(Default)">一卡通</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

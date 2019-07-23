@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="客户端ID" Provider="LSW.Providers.RegistrySettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="服务器IP" Provider="LSW.Providers.RegistrySettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="端口号" Provider="LSW.Providers.RegistrySettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6100</Value>
+    </Setting>
+    <Setting Name="新版本号" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="更新路径" Provider="LSW.Providers.INIFileSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.wzhbtz.com/Update</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

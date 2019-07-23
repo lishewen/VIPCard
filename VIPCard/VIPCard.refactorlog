@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="f18aa06a-3b67-4715-ab5b-c2d953533b91" ChangeDateTime="04/11/2012 05:55:32">
+    <Property Name="ElementName" Value="[dbo].[User].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="编号" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="521fb8a7-9317-420a-929c-0c6332c22d5a" ChangeDateTime="04/11/2012 06:08:03">
+    <Property Name="ElementName" Value="[dbo].[CardIssue].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CardIssue]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="编号" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0bfea638-a1a6-4027-a970-bd73dec2185b" ChangeDateTime="04/11/2012 06:14:38">
+    <Property Name="ElementName" Value="[dbo].[Trade].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Trade]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="编号" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="26771a70-cf60-4e03-8575-5d4572d8b271" ChangeDateTime="04/11/2012 06:17:13">
+    <Property Name="ElementName" Value="[dbo].[Trade].[行业分成]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Trade]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="本行业分成" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9a7191ff-d13d-4a41-9bdb-08c73244937d" ChangeDateTime="04/11/2012 06:21:15">
+    <Property Name="ElementName" Value="[dbo].[Store].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Store]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="编号" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9faaaca7-e1b1-4a69-b0a1-d61ed42e92db" ChangeDateTime="04/11/2012 06:29:19">
+    <Property Name="ElementName" Value="[dbo].[Order].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Order]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="编号" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b3608006-0831-4df4-bd2d-9deff410afcf" ChangeDateTime="04/11/2012 06:30:27">
+    <Property Name="ElementName" Value="[dbo].[FK_Store_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Store]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Store_Trade]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3767701f-1a39-4069-a00d-9a4d6b3b1cd9" ChangeDateTime="04/11/2012 06:34:02">
+    <Property Name="ElementName" Value="[dbo].[Order].[卡号]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Order]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="用户ID" />
+  </Operation>
+</Operations>

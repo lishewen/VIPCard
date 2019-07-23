@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VIPCardModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="VIPCardModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="VIPCardModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CardIssue" EntityType="VIPCardModel.Store.CardIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="VIPCardModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Salesman" EntityType="VIPCardModel.Store.Salesman" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Store" EntityType="VIPCardModel.Store.Store" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Trade" EntityType="VIPCardModel.Store.Trade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="VIPCardModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_Order" EntityType="VIPCardModel.Store.V_Order" store:Type="Views" store:Schema="dbo" store:Name="V_Order">
+            <DefiningQuery>SELECT 
+      [V_Order].[编号] AS [编号], 
+      [V_Order].[用户名] AS [用户名], 
+      [V_Order].[卡号] AS [卡号], 
+      [V_Order].[手机] AS [手机], 
+      [V_Order].[店名] AS [店名], 
+      [V_Order].[金额] AS [金额], 
+      [V_Order].[时间] AS [时间], 
+      [V_Order].[消费类型] AS [消费类型]
+      FROM [dbo].[V_Order] AS [V_Order]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_OrderC" EntityType="VIPCardModel.Store.V_OrderC" store:Type="Views" store:Schema="dbo" store:Name="V_OrderC">
+            <DefiningQuery>SELECT 
+      [V_OrderC].[编号] AS [编号], 
+      [V_OrderC].[用户名] AS [用户名], 
+      [V_OrderC].[卡号] AS [卡号], 
+      [V_OrderC].[店名] AS [店名], 
+      [V_OrderC].[金额] AS [金额], 
+      [V_OrderC].[时间] AS [时间], 
+      [V_OrderC].[我方提成] AS [我方提成], 
+      [V_OrderC].[发卡方提成] AS [发卡方提成], 
+      [V_OrderC].[消费返还] AS [消费返还], 
+      [V_OrderC].[成本] AS [成本], 
+      [V_OrderC].[名称] AS [名称], 
+      [V_OrderC].[消费类型] AS [消费类型]
+      FROM [dbo].[V_OrderC] AS [V_OrderC]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_OrderT" EntityType="VIPCardModel.Store.V_OrderT" store:Type="Views" store:Schema="dbo" store:Name="V_OrderT">
+            <DefiningQuery>SELECT 
+      [V_OrderT].[编号] AS [编号], 
+      [V_OrderT].[用户名] AS [用户名], 
+      [V_OrderT].[卡号] AS [卡号], 
+      [V_OrderT].[手机] AS [手机], 
+      [V_OrderT].[店名] AS [店名], 
+      [V_OrderT].[金额] AS [金额], 
+      [V_OrderT].[时间] AS [时间], 
+      [V_OrderT].[行业] AS [行业], 
+      [V_OrderT].[我方提成] AS [我方提成], 
+      [V_OrderT].[发卡方提成] AS [发卡方提成], 
+      [V_OrderT].[消费返还] AS [消费返还], 
+      [V_OrderT].[成本] AS [成本], 
+      [V_OrderT].[消费类型] AS [消费类型]
+      FROM [dbo].[V_OrderT] AS [V_OrderT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_User" EntityType="VIPCardModel.Store.V_User" store:Type="Views" store:Schema="dbo" store:Name="V_User">
+            <DefiningQuery>SELECT 
+      [V_User].[编号] AS [编号], 
+      [V_User].[用户名] AS [用户名], 
+      [V_User].[手机] AS [手机], 
+      [V_User].[卡号] AS [卡号], 
+      [V_User].[余额] AS [余额], 
+      [V_User].[性别] AS [性别], 
+      [V_User].[激活时间] AS [激活时间], 
+      [V_User].[级别] AS [级别], 
+      [V_User].[消费额] AS [消费额], 
+      [V_User].[发卡人] AS [发卡人], 
+      [V_User].[状态] AS [状态]
+      FROM [dbo].[V_User] AS [V_User]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Order_Store" Association="VIPCardModel.Store.FK_Order_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Salesman" Association="VIPCardModel.Store.FK_Store_Salesman">
+            <End Role="Salesman" EntitySet="Salesman" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Trade" Association="VIPCardModel.Store.FK_Store_Trade">
+            <End Role="Trade" EntitySet="Trade" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CardIssue" Association="VIPCardModel.Store.FK_User_CardIssue">
+            <End Role="CardIssue" EntitySet="CardIssue" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="密码" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CardIssue">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="名称" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="发卡范围" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+          <Property Name="密码" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="用户ID" Type="int" Nullable="false" />
+          <Property Name="店铺ID" Type="int" Nullable="false" />
+          <Property Name="金额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="时间" Type="datetime" Nullable="false" />
+          <Property Name="成本" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="消费返还" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="发卡方提成" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="我方提成" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="Salesman">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="姓名" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="密码" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="店名" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="所属行业ID" Type="int" Nullable="false" />
+          <Property Name="客户端ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="业务员ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="名称" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="消费方分成" Type="int" Nullable="false" />
+          <Property Name="发卡方分成" Type="int" Nullable="false" />
+          <Property Name="成本比重" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6005: The data type of the column 'Info' is currently not supported so the column 'Info' in table 'sqlbreakupclub.dbo.User' was excluded.
+      -->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="密码" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="余额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="发卡方编号" Type="int" />
+          <Property Name="性别" Type="nvarchar" MaxLength="50" />
+          <Property Name="激活时间" Type="datetime" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="年" Type="int" />
+          <Property Name="月" Type="int" />
+          <Property Name="日" Type="int" />
+          <Property Name="职业" Type="nvarchar" MaxLength="50" />
+          <Property Name="级别" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“sqlbreakupclub.dbo.V_Order”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_Order">
+          <Key>
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="消费类型" />
+          </Key>
+          <Property Name="编号" Type="varchar" MaxLength="31" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="店名" Type="nvarchar" MaxLength="50" />
+          <Property Name="金额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="时间" Type="datetime" Nullable="false" />
+          <Property Name="消费类型" Type="varchar" Nullable="false" MaxLength="4" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“sqlbreakupclub.dbo.V_OrderC”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_OrderC">
+          <Key>
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="我方提成" />
+            <PropertyRef Name="发卡方提成" />
+            <PropertyRef Name="消费返还" />
+            <PropertyRef Name="成本" />
+            <PropertyRef Name="消费类型" />
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+          <Property Name="店名" Type="nvarchar" MaxLength="50" />
+          <Property Name="金额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="时间" Type="datetime" Nullable="false" />
+          <Property Name="我方提成" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="发卡方提成" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="消费返还" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="成本" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="名称" Type="nvarchar" MaxLength="50" />
+          <Property Name="消费类型" Type="varchar" Nullable="false" MaxLength="4" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“sqlbreakupclub.dbo.V_OrderT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_OrderT">
+          <Key>
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="我方提成" />
+            <PropertyRef Name="发卡方提成" />
+            <PropertyRef Name="消费返还" />
+            <PropertyRef Name="成本" />
+            <PropertyRef Name="消费类型" />
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="店名" Type="nvarchar" MaxLength="50" />
+          <Property Name="金额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="时间" Type="datetime" Nullable="false" />
+          <Property Name="行业" Type="nvarchar" MaxLength="50" />
+          <Property Name="我方提成" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="发卡方提成" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="消费返还" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="成本" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="消费类型" Type="varchar" Nullable="false" MaxLength="4" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“sqlbreakupclub.dbo.V_User”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_User">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="卡号" />
+            <PropertyRef Name="余额" />
+            
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Name="编号" Type="int" Nullable="false" />
+          <Property Name="用户名" Type="nvarchar" MaxLength="50" />
+          <Property Name="手机" Type="nvarchar" MaxLength="50" />
+          <Property Name="卡号" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="余额" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="性别" Type="nvarchar" MaxLength="50" />
+          <Property Name="激活时间" Type="datetime" />
+          <Property Name="级别" Type="nvarchar" MaxLength="50" />
+          <Property Name="消费额" Type="decimal" Nullable="false" Precision="38" Scale="2" />
+          <Property Name="发卡人" Type="nvarchar" MaxLength="50" />
+          <Property Name="状态" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <Association Name="FK_Order_Store">
+          <End Role="Store" Type="VIPCardModel.Store.Store" Multiplicity="1" />
+          <End Role="Order" Type="VIPCardModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="店铺ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Salesman">
+          <End Role="Salesman" Type="VIPCardModel.Store.Salesman" Multiplicity="0..1" />
+          <End Role="Store" Type="VIPCardModel.Store.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salesman">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="业务员ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Trade">
+          <End Role="Trade" Type="VIPCardModel.Store.Trade" Multiplicity="1" />
+          <End Role="Store" Type="VIPCardModel.Store.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="所属行业ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CardIssue">
+          <End Role="CardIssue" Type="VIPCardModel.Store.CardIssue" Multiplicity="0..1" />
+          <End Role="User" Type="VIPCardModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardIssue">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="发卡方编号" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="LSWAddUserEx" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startno" Type="int" Mode="In" />
+          <Parameter Name="endno" Type="int" Mode="In" />
+          <Parameter Name="fid" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VIPCardModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="VIPCardEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="VIPCardModel.Admin" />
+          <EntitySet Name="CardIssues" EntityType="VIPCardModel.CardIssue" />
+          <EntitySet Name="Orders" EntityType="VIPCardModel.Order" />
+          <EntitySet Name="Stores" EntityType="VIPCardModel.Store" />
+          <EntitySet Name="Trades" EntityType="VIPCardModel.Trade" />
+          <EntitySet Name="Users" EntityType="VIPCardModel.User" />
+          <AssociationSet Name="FK_Order_Store" Association="VIPCardModel.FK_Order_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="VIPCardModel.FK_Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Trade" Association="VIPCardModel.FK_Store_Trade">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <EntitySet Name="V_Order" EntityType="VIPCardModel.V_Order" />
+          <EntitySet Name="Salesmen" EntityType="VIPCardModel.Salesman" />
+          <AssociationSet Name="FK_User_CardIssue" Association="VIPCardModel.FK_User_CardIssue">
+            <End Role="CardIssue" EntitySet="CardIssues" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Salesman" Association="VIPCardModel.FK_Store_Salesman">
+            <End Role="Salesman" EntitySet="Salesmen" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <EntitySet Name="V_OrderT" EntityType="VIPCardModel.V_OrderT" />
+          <EntitySet Name="V_OrderC" EntityType="VIPCardModel.V_OrderC" />
+          <FunctionImport Name="LSWAddUserEx">
+            <Parameter Name="startno" Mode="In" Type="Int32" />
+            <Parameter Name="endno" Mode="In" Type="Int32" />
+            <Parameter Name="fid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="V_User" EntityType="VIPCardModel.V_User" />
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="密码" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="卡号" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CardIssue">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="名称" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="发卡范围" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="卡号" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="密码" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="e10adc3949ba59abbe56e057f20f883e" />
+          <NavigationProperty Name="Users" Relationship="VIPCardModel.FK_User_CardIssue" FromRole="CardIssue" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="用户ID" Type="Int32" Nullable="false" />
+          <Property Name="店铺ID" Type="Int32" Nullable="false" />
+          <Property Name="金额" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="时间" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Store" Relationship="VIPCardModel.FK_Order_Store" FromRole="Order" ToRole="Store" />
+          <NavigationProperty Name="User" Relationship="VIPCardModel.FK_Order_User" FromRole="Order" ToRole="User" />
+          <Property Type="Decimal" Name="成本" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="消费返还" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="发卡方提成" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="我方提成" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="店名" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="所属行业ID" Type="Int32" Nullable="false" DefaultValue="1" />
+          <Property Name="客户端ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="VIPCardModel.FK_Order_Store" FromRole="Store" ToRole="Order" />
+          <NavigationProperty Name="Trade" Relationship="VIPCardModel.FK_Store_Trade" FromRole="Store" ToRole="Trade" />
+          <Property Type="Int32" Name="业务员ID" />
+          <NavigationProperty Name="Salesman" Relationship="VIPCardModel.FK_Store_Salesman" FromRole="Store" ToRole="Salesman" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="名称" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="发卡方分成" Type="Int32" Nullable="false" />
+          <Property Name="成本比重" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Stores" Relationship="VIPCardModel.FK_Store_Trade" FromRole="Trade" ToRole="Store" />
+          <Property Type="Int32" Name="消费方分成" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Name="编号" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="用户名" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="密码" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="手机" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="卡号" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="余额" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Orders" Relationship="VIPCardModel.FK_Order_User" FromRole="User" ToRole="Order" />
+          <Property Type="Int32" Name="发卡方编号" />
+          <NavigationProperty Name="CardIssue" Relationship="VIPCardModel.FK_User_CardIssue" FromRole="User" ToRole="CardIssue" />
+          <Property Type="String" Name="性别" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="激活时间" Precision="3" />
+          <Property Type="String" Name="QQ" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="年" />
+          <Property Type="Int32" Name="月" />
+          <Property Type="Int32" Name="日" />
+          <Property Type="String" Name="职业" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="级别" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Order_Store">
+          <End Role="Store" Type="VIPCardModel.Store" Multiplicity="1" />
+          <End Role="Order" Type="VIPCardModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="店铺ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="VIPCardModel.User" Multiplicity="1" />
+          <End Role="Order" Type="VIPCardModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="用户ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Trade">
+          <End Role="Trade" Type="VIPCardModel.Trade" Multiplicity="1" />
+          <End Role="Store" Type="VIPCardModel.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="所属行业ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_Order">
+          <Key>
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="消费类型" />
+          </Key>
+          <Property Type="String" Name="编号" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="用户名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="手机" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="店名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="金额" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="时间" Nullable="false" Precision="3" />
+          <Property Type="String" Name="消费类型" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Salesman">
+          <Key>
+            <PropertyRef Name="编号" />
+          </Key>
+          <Property Type="Int32" Name="编号" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="姓名" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="密码" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="e10adc3949ba59abbe56e057f20f883e" />
+          <Property Type="String" Name="手机" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Stores" Relationship="VIPCardModel.FK_Store_Salesman" FromRole="Salesman" ToRole="Store" />
+        </EntityType>
+        <Association Name="FK_User_CardIssue">
+          <End Type="VIPCardModel.CardIssue" Role="CardIssue" Multiplicity="0..1" />
+          <End Type="VIPCardModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardIssue">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="发卡方编号" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Salesman">
+          <End Type="VIPCardModel.Salesman" Role="Salesman" Multiplicity="0..1" />
+          <End Type="VIPCardModel.Store" Role="Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salesman">
+              <PropertyRef Name="编号" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="业务员ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_OrderT">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="我方提成" />
+            <PropertyRef Name="发卡方提成" />
+            <PropertyRef Name="消费返还" />
+            <PropertyRef Name="成本" />
+            <PropertyRef Name="消费类型" />
+          </Key>
+          <Property Type="String" Name="编号" Nullable="false" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="用户名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="手机" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="店名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="金额" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="时间" Nullable="false" Precision="3" />
+          <Property Type="String" Name="行业" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="我方提成" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="发卡方提成" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="消费返还" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="成本" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="消费类型" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_OrderC">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="金额" />
+            <PropertyRef Name="时间" />
+            <PropertyRef Name="我方提成" />
+            <PropertyRef Name="发卡方提成" />
+            <PropertyRef Name="消费返还" />
+            <PropertyRef Name="成本" />
+            <PropertyRef Name="消费类型" />
+          </Key>
+          <Property Type="String" Name="编号" Nullable="false" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="用户名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="店名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="金额" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="时间" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="我方提成" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="发卡方提成" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="消费返还" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="成本" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="名称" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="消费类型" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_User">
+          <Key>
+            <PropertyRef Name="编号" />
+            <PropertyRef Name="卡号" />
+            <PropertyRef Name="余额" />
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Type="Int32" Name="编号" Nullable="false" />
+          <Property Type="String" Name="用户名" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="手机" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="卡号" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="余额" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="性别" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="激活时间" Precision="3" />
+          <Property Type="String" Name="级别" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="消费额" Precision="38" Scale="2" Nullable="false" />
+          <Property Type="String" Name="发卡人" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="状态" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VIPCardModelStoreContainer" CdmEntityContainer="VIPCardEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="VIPCardModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="密码" ColumnName="密码" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardIssues">
+            <EntityTypeMapping TypeName="VIPCardModel.CardIssue">
+              <MappingFragment StoreEntitySet="CardIssue">
+                <ScalarProperty Name="密码" ColumnName="密码" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="名称" ColumnName="名称" />
+                <ScalarProperty Name="发卡范围" ColumnName="发卡范围" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="VIPCardModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="我方提成" ColumnName="我方提成" />
+                <ScalarProperty Name="发卡方提成" ColumnName="发卡方提成" />
+                <ScalarProperty Name="消费返还" ColumnName="消费返还" />
+                <ScalarProperty Name="成本" ColumnName="成本" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="用户ID" ColumnName="用户ID" />
+                <ScalarProperty Name="店铺ID" ColumnName="店铺ID" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="时间" ColumnName="时间" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="VIPCardModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="业务员ID" ColumnName="业务员ID" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="店名" ColumnName="店名" />
+                <ScalarProperty Name="所属行业ID" ColumnName="所属行业ID" />
+                <ScalarProperty Name="客户端ID" ColumnName="客户端ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trades">
+            <EntityTypeMapping TypeName="VIPCardModel.Trade">
+              <MappingFragment StoreEntitySet="Trade">
+                <ScalarProperty Name="消费方分成" ColumnName="消费方分成" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="名称" ColumnName="名称" />
+                <ScalarProperty Name="发卡方分成" ColumnName="发卡方分成" />
+                <ScalarProperty Name="成本比重" ColumnName="成本比重" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VIPCardModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="级别" ColumnName="级别" />
+                <ScalarProperty Name="职业" ColumnName="职业" />
+                <ScalarProperty Name="日" ColumnName="日" />
+                <ScalarProperty Name="月" ColumnName="月" />
+                <ScalarProperty Name="年" ColumnName="年" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="激活时间" ColumnName="激活时间" />
+                <ScalarProperty Name="性别" ColumnName="性别" />
+                <ScalarProperty Name="发卡方编号" ColumnName="发卡方编号" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="密码" ColumnName="密码" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="余额" ColumnName="余额" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Order">
+            <EntityTypeMapping TypeName="VIPCardModel.V_Order">
+              <MappingFragment StoreEntitySet="V_Order">
+                <ScalarProperty Name="消费类型" ColumnName="消费类型" />
+                <ScalarProperty Name="时间" ColumnName="时间" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="店名" ColumnName="店名" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salesmen">
+            <EntityTypeMapping TypeName="VIPCardModel.Salesman">
+              <MappingFragment StoreEntitySet="Salesman">
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="密码" ColumnName="密码" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_OrderT">
+            <EntityTypeMapping TypeName="VIPCardModel.V_OrderT">
+              <MappingFragment StoreEntitySet="V_OrderT">
+                <ScalarProperty Name="消费类型" ColumnName="消费类型" />
+                <ScalarProperty Name="成本" ColumnName="成本" />
+                <ScalarProperty Name="消费返还" ColumnName="消费返还" />
+                <ScalarProperty Name="发卡方提成" ColumnName="发卡方提成" />
+                <ScalarProperty Name="我方提成" ColumnName="我方提成" />
+                <ScalarProperty Name="行业" ColumnName="行业" />
+                <ScalarProperty Name="时间" ColumnName="时间" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="店名" ColumnName="店名" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_OrderC">
+            <EntityTypeMapping TypeName="VIPCardModel.V_OrderC">
+              <MappingFragment StoreEntitySet="V_OrderC">
+                <ScalarProperty Name="消费类型" ColumnName="消费类型" />
+                <ScalarProperty Name="名称" ColumnName="名称" />
+                <ScalarProperty Name="成本" ColumnName="成本" />
+                <ScalarProperty Name="消费返还" ColumnName="消费返还" />
+                <ScalarProperty Name="发卡方提成" ColumnName="发卡方提成" />
+                <ScalarProperty Name="我方提成" ColumnName="我方提成" />
+                <ScalarProperty Name="时间" ColumnName="时间" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="店名" ColumnName="店名" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="LSWAddUserEx" FunctionName="VIPCardModel.Store.LSWAddUserEx" />
+          <EntitySetMapping Name="V_User">
+            <EntityTypeMapping TypeName="VIPCardModel.V_User">
+              <MappingFragment StoreEntitySet="V_User">
+                <ScalarProperty Name="状态" ColumnName="状态" />
+                <ScalarProperty Name="发卡人" ColumnName="发卡人" />
+                <ScalarProperty Name="消费额" ColumnName="消费额" />
+                <ScalarProperty Name="级别" ColumnName="级别" />
+                <ScalarProperty Name="激活时间" ColumnName="激活时间" />
+                <ScalarProperty Name="性别" ColumnName="性别" />
+                <ScalarProperty Name="余额" ColumnName="余额" />
+                <ScalarProperty Name="卡号" ColumnName="卡号" />
+                <ScalarProperty Name="手机" ColumnName="手机" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="VIPCardModel.Admin" Width="1.5" PointX="2.75" PointY="4.75" Height="1.6222135416666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.CardIssue" Width="1.5" PointX="0.75" PointY="8.375" Height="1.9594531249999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Order" Width="1.5" PointX="5.25" PointY="1" Height="2.8025520833333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Store" Width="1.5" PointX="3" PointY="1.25" Height="2.2966927083333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Trade" Width="1.5" PointX="0.75" PointY="1.375" Height="1.9594531249999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.User" Width="1.5" PointX="3" PointY="8.125" Height="2.4653124999999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.V_Order" Width="1.5" PointX="4.75" PointY="4.75" Height="2.1280729166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.Salesman" Width="1.5" PointX="0.75" PointY="5.375" Height="1.9594531249999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.V_OrderT" Width="1.5" PointX="6.75" PointY="4.75" Height="2.9711718749999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIPCardModel.V_OrderC" Width="1.5" PointX="7.75" PointY="0.75" Height="2.8025520833333353" IsExpanded="true" />
+        <AssociationConnector Association="VIPCardModel.FK_Order_Store" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.3983463541666667" />
+          <ConnectorPoint PointX="5.25" PointY="2.3983463541666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="VIPCardModel.FK_Order_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.35765625" />
+          <ConnectorPoint PointX="6.5" PointY="9.35765625" />
+          <ConnectorPoint PointX="6.5" PointY="3.8025520833333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="VIPCardModel.FK_Store_Trade" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.3547265625" />
+          <ConnectorPoint PointX="3" PointY="2.3547265625" />
+        </AssociationConnector>
+        <AssociationConnector Association="VIPCardModel.FK_User_CardIssue" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.3547265625" />
+          <ConnectorPoint PointX="3" PointY="9.3547265625" />
+        </AssociationConnector>
+        <AssociationConnector Association="VIPCardModel.FK_Store_Salesman" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.8845833333333335" />
+          <ConnectorPoint PointX="4.40625" PointY="6.8845833333333335" />
+          <ConnectorPoint PointX="4.40625" PointY="3.5466927083333335" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
